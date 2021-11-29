@@ -15,8 +15,6 @@ export default {
         border-top: 0.4rem solid #111;
         background-color: #222;
         width: 100%;
-        position: absolute;
-        bottom: 0;
         color: #fcba03;
         p{
             font-size: 2rem;
