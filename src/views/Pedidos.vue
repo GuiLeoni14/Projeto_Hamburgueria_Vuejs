@@ -1,20 +1,18 @@
 <template>
-    <section class="s-home">
+    <section class="s-pedidos">
         <div class="container">
-            <h1>Home</h1>
+            <h1>Pedidos</h1>
         </div>
     </section>
 </template>
-
 <script>
-// @ is an alias to /src
 export default {
-    name: 'Home',
+    name: 'Pedidos',
 }
 </script>
 
 <style lang="scss" scoped>
-    .s-home{
+    .s-pedidos{
         padding-top: 15rem;
     }
 </style>

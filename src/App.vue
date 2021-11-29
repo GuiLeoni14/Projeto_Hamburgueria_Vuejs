@@ -1,30 +1,62 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+    <Navbar :logo="logo_src" :alt="app_name" />
+    <router-view/>
+    <Footer/>
 </template>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
+export default {
+    components: {
+        Navbar,
+        Footer,
+    },
+    data(){
+        return{
+            logo_src: '/img/logo.png',
+            app_name: 'Make your burguer'
+        }
     }
-  }
 }
+</script>
+<style lang="scss">
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    }
+    html{
+        font-size: 62.5%;
+    }
+
+    .container{
+    width: 100%;
+    max-width: 121.6rem;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    }
+
+    h1{
+        color: #222;
+        font-size: 4.2rem;
+    }
+
+    @mixin responsive($ScrennWidth) {
+        @media(max-width: $ScrennWidth){
+            @content;
+        }
+    }
+
+    @mixin flex($direction, $align, $justify) {
+        display: flex;
+        flex-direction: $direction;
+        align-items: $align;
+        justify-content: $justify;
+    }
+
 </style>
