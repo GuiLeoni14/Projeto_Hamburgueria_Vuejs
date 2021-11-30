@@ -2,7 +2,7 @@
     <div class="main_form">
         <p>Component de mensagem</p>
         <div class="form">
-            <form action="">
+            <form @submit="createBurguer">
                 <div class="input_container">
                     <label for="nome">Nome do cliente: </label>
                     <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome: ">
@@ -11,25 +11,21 @@
                     <label for="pao">Escolha o pão: </label>
                     <select name="pao" id="pao" v-model="pao">
                         <option value="">Selecione o seu pão: </option>
-                        <option value="integral">Integral</option>
+                        <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{ pao.tipo }}</option>
                     </select>
                 </div>
                 <div class="input_container">
                     <label for="carne">Escolha a carne: </label>
                     <select name="carne" id="pao" v-model="carne">
                         <option value="">Selecione o tipo de carne: </option>
-                        <option value="maminha">Maminha</option>
+                        <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">{{ carne.tipo }}</option>
                     </select>
                 </div>
                 <div class="input_container opcionais_container">
                     <label id="opc_title" for="opcionais">Selecione os opcionais: </label>
-                    <div class="checkbox_container">
-                        <input type="checkbox" name="opcionais" v-model="opcionais" value="salame">
-                        <span>Salame</span>
-                    </div>
-                    <div class="checkbox_container">
-                        <input type="checkbox" name="opcionais" v-model="opcionais" value="salame">
-                        <span>Salame</span>
+                    <div class="checkbox_container" v-for="opcional in opcionaisdata" :key="opcional.id">
+                        <input type="checkbox" name="opcionais" v-model="opcionais" :value="opcional.tipo">
+                        <span>{{ opcional.tipo }}</span>
                     </div>
                 </div>
                 <div class="input_container">
@@ -42,6 +38,53 @@
 <script>
 export default {
     name: 'BurguerForm',
+    data(){
+        return{
+            paes: null,
+            carnes: null,
+            opcionaisdata: null,
+            nome: null,
+            pao: null,
+            carne: null,
+            opcionais: [],
+            status: 'Solicitado',
+            msg: null
+        }
+    },
+    methods: {
+        async getIngredientes(){
+            const req = await fetch("http://localhost:3000/ingredientes");
+            const data = await req.json();
+
+            this.paes = data.paes;
+            this.carnes = data.carnes;
+            this.opcionaisdata = data.opcionais;
+        },
+        async createBurguer(e){
+            e.preventDefault();
+            const data = {
+                nome: this.nome,
+                carne: this.carne,
+                pao: this.pao,
+                opcionais: Array.from(this.opcionais),
+                status: "Solicitado"
+            }
+            const dataJson = JSON.stringify(data);
+            const req = await fetch('http://localhost:3000/burgers', {
+                method: "POST",
+                headers: {"Content-Type" : "application/json"},
+                body: dataJson
+            });
+            const res = await req.json();
+            this.nome = "";
+            this.carne = "";
+            this.pao = "";
+            this.opcionais = "";
+        }
+    },
+    mounted() {
+        this.getIngredientes() 
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -79,6 +122,11 @@ export default {
                     select{
                         border: 1px solid #222;
                         border-radius: 0.2rem;
+                    }
+                    input{
+                        padding: 1rem;
+                        border-radius: 0.2rem;
+                        border: 1px solid #222;
                     }
                     .submit_btn{
                         background-color: #222;
