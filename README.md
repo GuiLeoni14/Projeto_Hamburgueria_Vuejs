@@ -9,8 +9,7 @@ Projeto desenvolvido no curso Hora de Codar ministrado pelo Matheus Batisti, ten
 + O backend foi desenvolvido com a biblioteca json-server.
 
 ## Aprendizado
-+ Com esse projeto eu aprendi muito conteúdo relacionado a Vue.js, dentre eles posso destacar a maneira simples e direta com que o Vue.js 
-nos apresenta para construir nossas aplicações.
++ Com esse projeto eu aprendi muito conteúdo relacionado a Vue.js, dentre eles posso destacar a maneira simples e direta, com que o Vue.js lida com sua arquitetura, dando uma facilidade para construir nossas aplicações.
 
 ## Tecnologias usadas:
 
