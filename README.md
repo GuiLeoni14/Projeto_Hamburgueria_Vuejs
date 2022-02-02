@@ -1,19 +1,25 @@
-# lojavuejs
+# Projeto_Hamburgueria_Vuejs
+Projeto desenvolvido no curso Hora de Codar ministrado pelo Matheus Batisti, tendo como objetivo: treinar os conceitos aprendidos sobre Vue.js
 
-## Project setup
-```
-npm install
-```
+> Status: Completed ⚠️
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Objetivo:
++ Desenvolver uma aplicação em Vue.js, para treinar os conceitos desse framework.
++ A aplicação possui o objetivo de realizar o gerenciamento de pedidos de uma humburgueria.
++ O backend foi desenvolvido com a biblioteca json-server.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Aprendizado
++ Com esse projeto eu aprendi muito conteúdo relacionado a Vue.js, dentre eles posso destacar a maneira simples e direta com que o Vue.js 
+nos apresenta para construir nossas aplicações.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Tecnologias usadas:
+
+<table>
+  <tr>
+    <td>HTML</td>
+    <td>CSS</td>
+    <td>SCSS</td>
+    <td>JAVASCRIPT</td>
+    <td>VUE.JS</td>
+  </tr>
+</table>
